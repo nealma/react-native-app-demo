@@ -25,3 +25,9 @@ react-native init HelloWorld
 ```
 open /path/to/Hello/ios/Hello.xcodeproj
 ```
+
+##真机调试HTTPs问题
+```
+#修改plist文件
+NSAppTransportSecurity -> + Allow Arbitrary Loads = true
+```
