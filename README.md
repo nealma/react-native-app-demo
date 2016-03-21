@@ -37,4 +37,6 @@ NSAppTransportSecurity -> + Allow Arbitrary Loads = true
 #修改AppDelegate.m文件
 //  jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle?platform=ios&dev=true"];
 jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+
+curl http://localhost:8081/index.ios.bundle -o main.jsbundle
 ```
