@@ -25,7 +25,7 @@ class Helloworld extends Component {
   render() {
     return (
         <Text> hello {this.props.name}! </Text>
-    )
+    );
   }
 }
 
@@ -37,7 +37,7 @@ class helloworld1 extends Component {
         <Helloworld name="neal" />
         <Helloworld name="neal" />
       </View>
-    )
+    );
   }
 }
 
@@ -73,7 +73,7 @@ class BlinkApp extends Component {
         <Blink text='I am yaya' />
         <Blink text='I am mama' />
       </View>
-    )
+    );
   }
 }
 
@@ -94,7 +94,7 @@ class Styles extends Component{
 
 var styles=StyleSheet.create({
   red: {
-    color: 'red',
+    color: 'red'
   },
   bigblue: {
     color: 'blue',
@@ -164,7 +164,7 @@ class JustifyContentBasics extends Component {
       <View style={{
           flex: 1,
           flexDirection: 'column',
-          justifyContent: 'space-around',
+          justifyContent: 'space-around'
         }}>
         <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
         <View style={{width: 50, height: 50, backgroundColor: 'skyblue'}} />
@@ -187,7 +187,7 @@ class AlignItemsBasics extends Component {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       }}>
         <View style={{width: 50, height: 50, backgroundColor: 'blue'}} />
         <View style={{width: 50, height: 50, backgroundColor: 'red'}} />
@@ -324,7 +324,7 @@ class YoDawgApp extends Component {
   render() {
     return (
       <MyScene title="qiangqiang"/>
-    )
+    );
   }
 }
 
@@ -332,20 +332,20 @@ class YoDawgApp extends Component {
  * Animated
  */
 class Playground extends React.Component {
-  constructor(props: any) {
+  constructor(props) {
     super(props);
     this.state = {
-      bounceValue: new Animated.Value(0),
+      bounceValue: new Animated.Value(0)
     };
   }
-  render(): ReactElement {
+  render() {
     return (
       <Animated.Image                         // 可选的基本组件类型: Image, Text, View
         source={{uri: 'http://i.imgur.com/XMKOH81.jpg'}}
         style={{
           flex: 1,
           transform: [                        // `transform`是一个有序数组（动画按顺序执行）
-            {scale: this.state.bounceValue},  // 将`bounceValue`赋值给 `scale`
+            {scale: this.state.bounceValue}  // 将`bounceValue`赋值给 `scale`
           ]
         }}
       />
@@ -357,7 +357,7 @@ class Playground extends React.Component {
       this.state.bounceValue,                 // 将`bounceValue`值动画化
       {
         toValue: 0.8,                         // 将其值以动画的形式改到一个较小值
-        friction: 1,                          // Bouncier spring
+        friction: 1                         // Bouncier spring
       }
     ).start();                                // 开始执行动画
   }

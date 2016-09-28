@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+//noinspection JSUnresolvedVariable
 import { Navigator, Text, TouchableHighlight, View } from 'react-native';
 
 export default class SimpleNavigationApp extends Component {
