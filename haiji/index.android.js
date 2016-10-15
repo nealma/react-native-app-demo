@@ -1,53 +1,63 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
+ * @author neal.ma
+ * @email neal.ma.sh@gmail.com
+ * @blog http://nealma.com
  */
-
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Navigator,
+    View,
+    Image,
+    Text
 } from 'react-native';
 
+import SlideMenu from './app/component/slide-menu-view';
+
 class haiji extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+        <SlideMenu style={{flex: 1, backgroundColor: '#FF6644'}} />
+    )
   }
 }
 
-const styles = StyleSheet.create({
+var styles = {
   container: {
     flex: 1,
+    backgroundColor: '#FFF',
+  },
+  navBar: {
+    height: 64,
+    backgroundColor: '#CCC'
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
+    height: 200,
+    backgroundColor: '#FFF'
+  },
+  loading: {
+    flex: 1,
+    backgroundColor: '#FFF',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  bgImage: {
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
+    resizeMode: 'stretch',
+  }
+};
 AppRegistry.registerComponent('haiji', () => haiji);

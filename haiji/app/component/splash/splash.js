@@ -23,7 +23,7 @@ class splash extends Component{
             this.props.navigator.replace({
                 name:"home",
                 component:main
-            });``
+            });
         },1000);
     }
     render(){
@@ -37,4 +37,5 @@ class splash extends Component{
     }
 }
 
+//noinspection JSUnresolvedVariable
 module.exports = splash;
