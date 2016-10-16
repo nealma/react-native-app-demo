@@ -13,7 +13,7 @@ import {
     Text
 } from 'react-native';
 
-import SlideMenu from './app/component/slide-menu-view';
+import SideMenu from './app/component/side-menu-view';
 
 class haiji extends Component {
 
@@ -23,7 +23,7 @@ class haiji extends Component {
 
   render() {
     return (
-        <SlideMenu style={{flex: 1, backgroundColor: '#FF6644'}} />
+        <SideMenu style={{flex: 1, backgroundColor: '#FF6644'}} />
     )
   }
 }
@@ -45,6 +45,7 @@ var styles = {
     marginRight: 10,
     height: 200,
     backgroundColor: '#FFF'
+
   },
   loading: {
     flex: 1,

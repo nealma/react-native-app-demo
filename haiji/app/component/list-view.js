@@ -14,15 +14,19 @@ import {
     RefreshControl,
     Text
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 const API_URL = 'https://api.douban.com/v2/music/search?q=love';
+var StaticContainer = require('react-static-container');
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-class HaijiListView extends Component {
+export default class HaijiListView extends Component {
 
     constructor(props) {
         super(props);
-        const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+        const ds = new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2,
+            sectionHeaderHasChanged : (s1, s2) => s1 !== s2
+        });
         this.state = {
             dataSource: ds.cloneWithRows([{title: 'fuck'}]),
             loaded: false,
@@ -46,9 +50,14 @@ class HaijiListView extends Component {
 
         return (
             <ListView
+                style={styles.container}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => this._renderRowView(rowData, this._onPress)}
                 onEndReached={this._handleLoadMore.bind(this)}
+                initialListSize={10}
+                renderHeader={this._renderHeader}
+                //renderSectionHeader={}
+                pageSize={4}
                 refreshControl={
                     <RefreshControl // 下拉刷新
                         refreshing={this.state.refreshing}
@@ -74,7 +83,7 @@ class HaijiListView extends Component {
                     })
                 }else{
                     _musics = musics.musics;
-                    console.log(_musics)
+                    console.log(musics)
                     this.setState({
                         dataSource:this.state.dataSource.cloneWithRows(_musics),
                         loaded:true
@@ -93,12 +102,10 @@ class HaijiListView extends Component {
                 <View style={styles.row}>
                     <View style={{flex: 1, backgroundColor: '#c8c7cc'}}/>
                     <View style={{flex: 20, backgroundColor: '#EFE',justifyContent: 'center', alignItems: 'center' }}>
-                        <Icon name="angle-right" size={30} color="#4F8EF7" style={{}}/>
-
                         <Text style={{
                             borderColor: '#d1d1d1',
                             borderWidth: 2,
-                            borderRadius: 20 }}>{ rowData.attrs.pubdate }天</Text>
+                            borderRadius: 5 }}>{ rowData.attrs.pubdate }天</Text>
                     </View>
                     <View style={{flex: 100}}>
                         <Image source={{uri: rowData.image}} style={styles.bgImage}>
@@ -124,14 +131,31 @@ class HaijiListView extends Component {
         // 加载更多
         this._onFetch(true);
     }
+    _renderHeader(){
+        console.log('renderHeader');
+        return(
+            <StaticContainer>
+                <View style={{ flex:1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height:50,backgroundColor:'red'}}>
+                    <Text></Text>
+                    <Text>孩记</Text>
+                    <Icon name="camera" size={20} color="#4F8EF7"/>
+                </View>
+            </StaticContainer>
+        )
+    }
+    renderSectionHeader(sectionData, sectionID) {
+        return (
+            <View style={styles.section}>
+                <Text style={styles.sectionText}>{sectionID}</Text>
+            </View>
+        )
+    }
 }
 
 var styles = {
     container: {
         flex: 1,
         backgroundColor: '#FFF',
-    },
-    itemStyle: {
     },
     navBar: {
         height: 64,
@@ -161,5 +185,3 @@ var styles = {
         resizeMode: 'stretch',
     }
 };
-
-module.exports = HaijiListView;
