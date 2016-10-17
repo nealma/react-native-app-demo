@@ -362,4 +362,5 @@ class Playground extends React.Component {
     ).start();                                // 开始执行动画
   }
 }
+
 AppRegistry.registerComponent('helloworld', () => Playground);
