@@ -17,7 +17,9 @@ import {
 
 import SideMenu from 'react-native-side-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import HaijListView from './view-list';
+import HaijiListView from './view-list';
+import HaijiCameraRoll from './view-camera-roll';
+
 const RESOURCE_AVATAR = require('../../app/resources/ly.png');
 const window = Dimensions.get('window');
 
@@ -33,7 +35,7 @@ export  default class MenuNavigator extends Component {
             case 'shiguangji':
                 return <ListViewPageMenu navigator={nav} />;
             case 'baobaoquan':
-                return <ListViewPageMenu navigator={nav} />;
+                return <PhotosPageMenu navigator={nav} />;
             case 'fankui':
                 return <ListViewPageMenu navigator={nav} />;
             case 'tuichu':
@@ -122,12 +124,50 @@ class ListViewPageMenu extends Component {
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
                 <MenuButton onPress={() => this.toggle()} />
-                <HaijListView />
+                <HaijiListView />
             </SideMenu>
         );
     }
 }
+class PhotosPageMenu extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen,
+        });
+    }
+
+    updateMenuState(isOpen) {
+        this.setState({ isOpen, });
+    }
+
+    onMenuItemSelected = (item) => {
+        this.setState({
+            isOpen: false,
+            selectedItem: item,
+        });
+        this.props.navigator.push({ id: item });
+    }
+
+    render() {
+
+        const menu = <Menu onItemSelected={this.onMenuItemSelected} navigator={this.props.navigator}/>;
+
+        return (
+            <SideMenu
+                menu={menu}
+                isOpen={this.state.isOpen}
+                onChange={(isOpen) => this.updateMenuState(isOpen)}>
+                <MenuButton onPress={() => this.toggle()} />
+                <HaijiCameraRoll />
+            </SideMenu>
+        );
+    }
+}
 class Menu extends Component {
 
     static propTypes = {
@@ -141,7 +181,7 @@ class Menu extends Component {
             <TouchableOpacity onPress={()=>this.props.onItemSelected(id)}>
                 <View style={styles.menuItem}>
                     <Text style={styles.menuItemText}>{text}</Text>
-                    <Icon name="angle-right" size={30} color="#4F8EF7"/>
+                    <Icon name="angle-right" size={20} color="#4F8EF7"/>
                 </View>
             </TouchableOpacity>
         )
@@ -214,7 +254,8 @@ var styles = {
     },
     menuItemText: {
         color: '#000000',
-        fontWeight: 'bold',
+        lineHeight: 20,
+        color: '#f8f8f8',
         fontSize: 20
     },
     menuButton: {
