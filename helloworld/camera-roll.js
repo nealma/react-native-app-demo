@@ -36,8 +36,6 @@ export default class CameraRollDemo extends Component {
                 photos: photos
             });
         }).catch(alert);
-        /*
-        */
     }
 
     saveImg(img1) {
@@ -69,7 +67,9 @@ export default class CameraRollDemo extends Component {
                         <Image
                             resizeMode='stretch'
                             style={[styles.imgHeight, styles.m5]}
-                            source={{uri: photos[parseInt(i)]}} />
+                            source={{uri: photos[parseInt(i)]}} >
+
+                        </Image>
                     </View>
                     <View style={styles.flex}>
                         <Image
