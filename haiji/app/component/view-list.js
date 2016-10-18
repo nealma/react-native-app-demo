@@ -12,12 +12,14 @@ import {
     ListView,
     ActivityIndicator,
     RefreshControl,
+    Platform,
     Text
 } from 'react-native';
 
 const API_URL = 'https://api.douban.com/v2/music/search?q=love';
 var StaticContainer = require('react-static-container');
 import Icon from 'react-native-vector-icons/FontAwesome';
+import HaijiCameraRoll from './view-camera-roll';
 
 export default class HaijiListView extends Component {
 
@@ -55,8 +57,6 @@ export default class HaijiListView extends Component {
                 renderRow={(rowData) => this._renderRowView(rowData, this._onPress)}
                 onEndReached={this._handleLoadMore.bind(this)}
                 initialListSize={10}
-                renderHeader={this._renderHeader}
-                //renderSectionHeader={}
                 pageSize={4}
                 refreshControl={
                     <RefreshControl // 下拉刷新
@@ -126,19 +126,30 @@ export default class HaijiListView extends Component {
         // 刷新
         this._onFetch(false);
     }
+    _goPhotos(object) {
+        // 打开相册
+        const { navigator } = object.props;
+        if(navigator) {
+            navigator.push({
+                name: '相册',
+                component: HaijiCameraRoll
+            });
+        }
+    }
 
     _handleLoadMore() {
         // 加载更多
         this._onFetch(true);
     }
-    _renderHeader(){
+    _renderHeader(object,onPress){
         console.log('renderHeader');
         return(
             <StaticContainer>
-                <View style={{ flex:1, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', height:50,backgroundColor:'red'}}>
+                <View style={{ flex:1, flexDirection: 'row', justifyContent: 'space-between',
+                    alignItems: 'center', height:50, backgroundColor:'red'}}>
                     <Text></Text>
                     <Text>孩记</Text>
-                    <Icon name="camera" size={20} color="#4F8EF7"/>
+                    <Icon name="camera" size={20} color="#4F8EF7" onPress={() => onPress(object)}/>
                 </View>
             </StaticContainer>
         )

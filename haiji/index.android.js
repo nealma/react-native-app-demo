@@ -13,7 +13,7 @@ import {
     Text
 } from 'react-native';
 
-import SideMenu from './app/component/side-menu-view';
+import SideMenu from './app/component/view-side-menu';
 
 class haiji extends Component {
 
@@ -28,37 +28,4 @@ class haiji extends Component {
   }
 }
 
-var styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  },
-  navBar: {
-    height: 64,
-    backgroundColor: '#CCC'
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
-    marginTop: 20,
-    marginLeft: 10,
-    marginRight: 10,
-    height: 200,
-    backgroundColor: '#FFF'
-
-  },
-  loading: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  bgImage: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    resizeMode: 'stretch',
-  }
-};
 AppRegistry.registerComponent('haiji', () => haiji);
