@@ -4,32 +4,18 @@
  * @flow
  */
 
-//noinspection JSUnresolvedVariable
 import React, {Component} from 'react';
-//noinspection JSUnresolvedVariable
-import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View,
-    Animated,
-    Image
-} from 'react-native';
+import { AppRegistry } from 'react-native';
 /**
  * Animated
  */
-import CameraRollDemo from './camera-roll'; // 主页
+//import CameraRollDemo from './camera-roll'; // 主页
 // import NavigatorDemo from './navigator-main-page'; // 主页
-import SideMenuNavigator from './sidemenu-navigator';
+// import SideMenuNavigator from './sidemenu-navigator';
+// import SideMenu from './sidemenu';
+import ListView from './listview';
 class helloworld extends React.Component {
     render() {
-        // camera roll
-        /*
-        return (
-
-        );
-        */
-
 
         return (
             // camera roll
@@ -39,10 +25,15 @@ class helloworld extends React.Component {
             //<NavigatorDemo />
 
             //sidemenu navigator
-            <SideMenuNavigator/>
+            //<SideMenuNavigator/>
+
+            //sidemenu
+            //<SideMenu />
+
+            //listview
+            <ListView />
         );
     }
 }
-
 
 AppRegistry.registerComponent('helloworld', () => helloworld);

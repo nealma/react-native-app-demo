@@ -151,7 +151,7 @@ class ThirdPageMenu extends Component {
                 menu={menu}
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
-                <MenuButton onPress={() => this.toggle()} style={{width: 20, height: 20}} />
+                <MenuButton onPress={() => this.toggle()} />
                 <ThirdPage/>
             </SideMenu>
         );
@@ -239,7 +239,7 @@ class MenuButton extends Component {
                     style={this.props.style}>
                     <Text>{this.props.children}</Text>
                     <Image
-                        source={{ uri: 'http://i.imgur.com/vKRaKDX.png', width: 40, height: 40, }} />
+                        source={{ uri: 'http://i.imgur.com/vKRaKDX.png'}} style={{ width: 40, height: 40 }}/>
                 </TouchableOpacity>
             </View>
         );
@@ -257,11 +257,8 @@ class Menu extends Component {
     }
 
     render() {
-
         return (
-
             <ScrollView scrollsToTop={false} style={styles.menu}>
-
                 <Text
                     onPress={() => this.props.onItemSelected('first')}
                     style={styles.item}>
@@ -286,8 +283,7 @@ class Menu extends Component {
 
 var styles = StyleSheet.create({
     menuButton: {
-        marginTop: 20,
-        backgroundColor: '#f8f8f8'
+        backgroundColor: '#777'
     },
     menu: {
         flex: 1,
