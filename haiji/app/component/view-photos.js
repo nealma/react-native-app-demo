@@ -28,14 +28,14 @@ export default class HaiJiCameraRoll extends Component {
     }
 
     componentDidMount() {
-        console.log('componentDidMount');
+        // console.log('componentDidMount');
         CameraRoll.getPhotos(fetchParams).then((data) => {
             const edges = data.edges;
             let photos = [];
             for(const photo of edges) {
                 photos.push(photo.node.image.uri);
             }
-            console.log(photos);
+            // console.log(photos);
             this.setState({
                 photos: photos
             });
@@ -60,7 +60,7 @@ export default class HaiJiCameraRoll extends Component {
 
     render() {
 
-        console.log('render');
+        // console.log('render');
 
         const photos = this.state.photos || [];
         let photosView = [];

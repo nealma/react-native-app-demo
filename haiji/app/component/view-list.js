@@ -5,21 +5,20 @@
  */
 import React, { Component } from 'react';
 import {
-    AppRegistry,
     View,
     Image,
     TouchableOpacity,
     ListView,
     ActivityIndicator,
     RefreshControl,
-    Platform,
     Text
 } from 'react-native';
 
 const API_URL = 'https://api.douban.com/v2/music/search?q=love';
-var StaticContainer = require('react-static-container');
+import StaticContainer from 'react-static-container';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import HaijiCameraRoll from './view-camera-roll';
+import HaijiCameraRoll from './view-photos';
+import Styles from './styles';
 
 export default class HaijiListView extends Component {
 
@@ -40,24 +39,22 @@ export default class HaijiListView extends Component {
     render() {
         if (!this.state.loaded) {
             return (
-                <View style={styles.container}>
-                    <View style={styles.loading}>
-                        <ActivityIndicator
-                            size='large'
-                            color='#eabb33'/>
-                    </View>
+                <View style={[Styles.container, Styles.center, Styles.bgColorWhite]}>
+                    <ActivityIndicator
+                        size='large'
+                        color='#eabb33'/>
                 </View>
             )
         }
 
         return (
             <ListView
-                style={styles.container}
+                style={[Styles.bgColorWhite]}
                 dataSource={this.state.dataSource}
                 renderRow={(rowData) => this._renderRowView(rowData, this._onPress)}
                 onEndReached={this._handleLoadMore.bind(this)}
-                initialListSize={10}
-                pageSize={4}
+                initialListSize={8}
+                pageSize={8}
                 refreshControl={
                     <RefreshControl // 下拉刷新
                         refreshing={this.state.refreshing}
@@ -83,7 +80,7 @@ export default class HaijiListView extends Component {
                     })
                 }else{
                     _musics = musics.musics;
-                    console.log(musics)
+                    // console.log(musics)
                     this.setState({
                         dataSource:this.state.dataSource.cloneWithRows(_musics),
                         loaded:true
@@ -97,19 +94,16 @@ export default class HaijiListView extends Component {
     _renderRowView(rowData, onPress) {
         return (
             <TouchableOpacity
-                underlayColor='#000'
                 onPress={(rowData) => onPress(rowData)}>
-                <View style={styles.row}>
-                    <View style={{flex: 1, backgroundColor: '#c8c7cc'}}/>
-                    <View style={{flex: 20, backgroundColor: '#EFE',justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{
-                            borderColor: '#d1d1d1',
-                            borderWidth: 2,
-                            borderRadius: 5 }}>{ rowData.attrs.pubdate }天</Text>
+                <View style={Styles.row}>
+                    <View style={[{flex: 2}, Styles.bgColorLightPurple]}/>
+                    <View style={[{flex: 20}, Styles.transparent, Styles.center]}>
+                        <Text style={[
+                            {borderWidth: 1},Styles.dayCircle, Styles.borderColorBrown]}>{ rowData.attrs.pubdate }天</Text>
                     </View>
                     <View style={{flex: 100}}>
-                        <Image source={{uri: rowData.image}} style={styles.bgImage}>
-                            <Text style={{backgroundColor: 'transparent'}}>{rowData.title}</Text>
+                        <Image source={{uri: rowData.image}} style={Styles.bgImage}>
+                            <Text style={[Styles.bgColorWhite]}>{rowData.title}</Text>
                         </Image>
                     </View>
                 </View>
@@ -142,7 +136,6 @@ export default class HaijiListView extends Component {
         this._onFetch(true);
     }
     _renderHeader(object,onPress){
-        console.log('renderHeader');
         return(
             <StaticContainer>
                 <View style={{ flex:1, flexDirection: 'row', justifyContent: 'space-between',
@@ -162,37 +155,3 @@ export default class HaijiListView extends Component {
         )
     }
 }
-
-var styles = {
-    container: {
-        flex: 1,
-        backgroundColor: '#FFF',
-    },
-    navBar: {
-        height: 64,
-        backgroundColor: '#CCC'
-    },
-    row: {
-        flex: 1,
-        flexDirection: 'row',
-        marginTop: 20,
-        marginLeft: 10,
-        marginRight: 10,
-        height: 200,
-        backgroundColor: '#FFF'
-
-    },
-    loading: {
-        flex: 1,
-        backgroundColor: '#FFF',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    bgImage: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        resizeMode: 'stretch',
-    }
-};

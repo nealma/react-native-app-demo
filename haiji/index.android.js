@@ -13,7 +13,7 @@ import {
     Text
 } from 'react-native';
 
-import SideMenu from './app/component/view-side-menu';
+import SideMenu from './app/component/view-menu-navigator';
 
 class haiji extends Component {
 

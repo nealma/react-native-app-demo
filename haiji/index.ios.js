@@ -4,16 +4,9 @@
  * @blog http://nealma.com
  */
 import React, { Component } from 'react';
-import {
-    AppRegistry,
-    StyleSheet,
-    Navigator,
-    View,
-    Image,
-    Text
-} from 'react-native';
+import { AppRegistry } from 'react-native';
 
-import HaijiNavigator from './app/component/view-side-menu';
+import HaijiNavigator from './app/component/view-menu-navigator';
 
 class haiji extends Component {
 
