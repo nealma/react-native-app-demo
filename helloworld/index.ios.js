@@ -10,7 +10,7 @@ import { AppRegistry } from 'react-native';
  * Animated
  */
 //import CameraRollDemo from './camera-roll'; // 主页
-// import NavigatorDemo from './navigator-main-page'; // 主页
+import NavigatorDemo from './navigator-main-page'; // 主页
 // import SideMenuNavigator from './sidemenu-navigator';
 // import SideMenu from './sidemenu';
 import ListView from './listview';
@@ -36,4 +36,4 @@ class helloworld extends React.Component {
     }
 }
 
-AppRegistry.registerComponent('helloworld', () => helloworld);
+AppRegistry.registerComponent('helloworld', () => NavigatorDemo);

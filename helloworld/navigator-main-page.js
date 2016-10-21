@@ -3,14 +3,12 @@ import {
     View,
     Navigator
 } from 'react-native';
-import FirstPageComponent from './navigator-first-page';
-import SecondPageComponent from './navigator-second-page';
+import FirstPage from './navigator-first-page';
 
-
-export default class SampleComponent extends React.Component {
+export default class Main extends React.Component {
     render() {
-        let defaultName = 'FirstPageComponent';
-        let defaultComponent = FirstPageComponent;
+        let defaultName = 'FirstPage';
+        let defaultComponent = FirstPage;
         return (
             <Navigator
                 initialRoute={{ name: defaultName, component: defaultComponent }}

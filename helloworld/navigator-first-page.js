@@ -6,9 +6,9 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import SecondPageComponent from './navigator-second-page';
+import SecondPage from './navigator-second-page';
 
-export default class FirstPageComponent extends React.Component {
+export default class FirstPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -17,18 +17,18 @@ export default class FirstPageComponent extends React.Component {
         const { navigator } = this.props;
         if(navigator) {
             navigator.push({
-                name: 'SecondPageComponent',
-                component: SecondPageComponent
+                name: 'SecondPage',
+                component: SecondPage
             });
         }
     }
     render() {
         return (
+            <View style={{flex: 1, backgroundColor: '#fcb064', justifyContent: 'center', alignItems: 'center'}}>
                 <TouchableOpacity onPress={()=>{this._pressButton();}}>
-            <View style={{backgroundColor: '#484848', marginTop: 100}}>
-                    <Text>First</Text>
-            </View>
+                            <Text style={{height: 30, width: 80}}>第一页</Text>
                 </TouchableOpacity>
+            </View>
         );
     }
 }

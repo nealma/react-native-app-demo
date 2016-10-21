@@ -5,9 +5,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import FirstPageComponent from './navigator-first-page';
-
-export default class SecondPageComponent extends React.Component {
+export default class SecondPage extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,16 +15,16 @@ export default class SecondPageComponent extends React.Component {
     _pressButton() {
         const { navigator } = this.props;
         if(navigator) {
-            //很熟悉吧，入栈出栈~ 把当前的页面pop掉，这里就返回到了上一个页面:FirstPageComponent了
+            //入栈出栈, 把当前的页面pop掉，返回到了上一个页面:FirstPage
             navigator.pop();
         }
     }
 
     render() {
         return (
-            <View style={{backgroundColor: '#484848', marginTop: 100}}>
-                <TouchableOpacity onPress={this._pressButton.bind(this)}>
-                    <Text>Second</Text>
+            <View style={{flex: 1, backgroundColor: '#fb9696', justifyContent: 'center', alignItems: 'center'}}>
+                <TouchableOpacity onPress={()=>{this._pressButton();}}>
+                    <Text style={{height: 30, width: 80}}>第二页</Text>
                 </TouchableOpacity>
             </View>
         );
