@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 
 import HaijiNavigator from './app/component/view-menu-navigator';
+import HaijiPost from './app/component/view-post';
 
 class haiji extends Component {
 

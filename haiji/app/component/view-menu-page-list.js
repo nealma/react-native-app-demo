@@ -32,12 +32,13 @@ export default class ListViewPageMenu extends Component {
             isOpen: false,
             selectedItem: item,
         });
-        if(!nodes.find((node)=>node.id == item)){
-            this.props.navigator.push({ id: item });
-        }else{
-            this.toggle();
-            this.props.navigator.jumpTo(nodes.find((node)=>node.id == item));
-        }
+        this.props.navigator.replace({ id: item });
+        // if(!nodes.find((node)=>node.id == item)){
+        //     this.props.navigator.push({ id: item });
+        // }else{
+        //     this.toggle();
+        //     this.props.navigator.jumpTo(nodes.find((node)=>node.id == item));
+        // }
     }
     render() {
 
@@ -48,7 +49,7 @@ export default class ListViewPageMenu extends Component {
                 menu={menu}
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
-                <Header menuOnPress={() => this.toggle()} photoOnPress={() => this.toggle()} />
+                <Header menuOnPress={() => this.toggle()} photoOnPress={() => this.onMenuItemSelected(2)} />
                 <HaijiListView />
             </SideMenu>
         );

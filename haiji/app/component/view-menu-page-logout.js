@@ -6,9 +6,8 @@
 import React, { Component } from 'react';
 
 import SideMenu from 'react-native-side-menu';
-import HaijiLogout from './view-logout';
+import HaijiLogout from './view-login';
 import Menu from './view-menu';
-import Header from './view-header';
 
 export default class FeedbackPageMenu extends Component {
     constructor(props) {
@@ -32,12 +31,14 @@ export default class FeedbackPageMenu extends Component {
             isOpen: false,
             selectedItem: item,
         });
-        if(!nodes.find((node)=>node.id == item)){
-            this.props.navigator.push({ id: item });
-        }else{
-            this.toggle();
-            this.props.navigator.jumpTo(nodes.find((node)=>node.id == item));
-        }
+        this.props.navigator.replace({ id: item });
+        // this.props.navigator.pop();
+        // if(!nodes.find((node)=>node.id == item)){
+        //     this.props.navigator.push({ id: item });
+        // }else{
+        //     this.toggle();
+        //     this.props.navigator.jumpTo(nodes.find((node)=>node.id == item));
+        // }
     }
     render() {
 
@@ -48,8 +49,7 @@ export default class FeedbackPageMenu extends Component {
                 menu={menu}
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
-                <Header menuOnPress={() => this.toggle()} photoOnPress={() => this.toggle()} />
-                <HaijiLogout />
+                <HaijiLogout loginOnPress={() => this.onMenuItemSelected(3)}/>
             </SideMenu>
         );
     }

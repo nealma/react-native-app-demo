@@ -13,16 +13,20 @@ import {
     ScrollView
 } from 'react-native';
 
-const fetchParams = {
-    first: 10,
-    assetType: 'Photos'
-};
-const imgURL = 'https://blog.yourtion.com/images/2016/03/'; //backup0.png
+import Config from './config';
+import Styles from './styles'
 
 export default class FeedBackPage extends Component {
     render() {
         return (
-            <View><Text>反馈</Text></View>
+            <View style={[Styles.container, Styles.bgColorLightRed, Styles.feedbackPadding]}>
+                <Text style={[Styles.menuItemText,Styles.feedbackPadding]}>{Config.feedback.introduce1}</Text>
+                <Text style={[Styles.menuItemText,Styles.feedbackPadding]}>{Config.feedback.introduce2}</Text>
+                <Text style={[Styles.menuItemText,Styles.feedbackPadding]}>{Config.feedback.introduce3}</Text>
+                <View style={[Styles.rowDirection, Styles.center,Styles.feedbackPadding]}>
+                    <Image source={{uri: Config.feedback.qrcode}} style={[Styles.feedbackQrcode]}/>
+                </View>
+            </View>
         );
     }
 }

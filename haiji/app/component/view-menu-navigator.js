@@ -9,8 +9,9 @@ import { Navigator } from 'react-native';
 import PhotosPageMenu from './view-menu-page-photos';
 import ListViewPageMenu from './view-menu-page-list';
 import HaijiFeedbackPageMenu from './view-menu-page-feedback';
+import HaijiPostPageMenu from './view-menu-page-post';
 import HaijiLogoutPageMenu from './view-menu-page-logout';
-
+import Config from './config';
 export default class MenuNavigator extends Component {
 
     constructor(props) {
@@ -20,13 +21,15 @@ export default class MenuNavigator extends Component {
 
     renderScene(route, nav) {
         switch (route.id) {
-            case 'shiguangji':
+            case 0:
                 return <ListViewPageMenu navigator={nav} />;
-            case 'baobaoquan':
+            case 1:
                 return <PhotosPageMenu navigator={nav} />;
-            case 'fankui':
+            case 2:
+                return <HaijiPostPageMenu navigator={nav} />;
+            case 3:
                 return <HaijiFeedbackPageMenu navigator={nav} />;
-            case 'tuichu':
+            case 4:
                 return <HaijiLogoutPageMenu navigator={nav} />;
             default:
                 return <ListViewPageMenu navigator={nav} />;
@@ -37,7 +40,7 @@ export default class MenuNavigator extends Component {
         return (
             <Navigator
                 ref={this._setNavigatorRef}
-                initialRoute={{id: 'shiguangji'}}
+                initialRoute={{id: Config.menus[4].index}}
                 renderScene={this.renderScene}
                 configureScene={(route) => {
                     if (route.sceneConfig) {

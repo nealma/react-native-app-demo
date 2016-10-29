@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Styles, { menuButton } from './styles';
+import Styles from './styles';
 
 export default class Header extends Component {
     menuHandlePress(e) {
@@ -26,11 +26,11 @@ export default class Header extends Component {
     }
     render() {
         return (
-            <View style={[Styles.menuButton, Styles.bgColorDarkGray]}>
+            <View style={[Styles.menuButton, Styles.bgColorDarkRed]}>
                 <TouchableOpacity onPress={this.menuHandlePress.bind(this)} >
                     <Icon name="bars" size={Styles.iconSize} color={Styles.iconColorWhite}/>
                 </TouchableOpacity>
-                <Text style={[Styles.fontSizeLarge, Styles.fontColorWhite]}>孩记</Text>
+                <Text style={[Styles.fontSizeLarge, Styles.menuItemText]}>孩记</Text>
                 <Icon name="camera" size={Styles.iconSize} color={Styles.iconColorWhite} onPress={this.photoHandlePress.bind(this)}/>
             </View>
         );

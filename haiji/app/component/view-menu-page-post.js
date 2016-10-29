@@ -6,11 +6,11 @@
 import React, { Component } from 'react';
 
 import SideMenu from 'react-native-side-menu';
-import HaijiFeedback from './view-feedback';
+import HaijiPost from './view-post';
 import Menu from './view-menu';
 import Header from './view-header';
 
-export default class FeedbackPageMenu extends Component {
+export default class PostPageMenu extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -50,7 +50,7 @@ export default class FeedbackPageMenu extends Component {
                 isOpen={this.state.isOpen}
                 onChange={(isOpen) => this.updateMenuState(isOpen)}>
                 <Header menuOnPress={() => this.toggle()} photoOnPress={() => this.onMenuItemSelected(2)} />
-                <HaijiFeedback />
+                <HaijiPost />
             </SideMenu>
         );
     }
