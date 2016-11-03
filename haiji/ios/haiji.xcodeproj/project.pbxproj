@@ -14,6 +14,7 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* haijiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* haijiTests.m */; };
 		08240E771DAE918D00A1020F /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 08240E761DAE918D00A1020F /* Fonts */; };
+		08A40A9B1DC54FCD003BA627 /* React.xcodeproj in Frameworks */ = {isa = PBXBuildFile; fileRef = 146833FF1AC3E56700842450 /* React.xcodeproj */; };
 		08D7B6B01DB4833100116ABB /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D7B6AF1DB470FB00116ABB /* libRCTCameraRoll.a */; };
 		08F9C5CF1DC4984800866662 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = 08F9C5CE1DC4984800866662 /* assets */; };
 		08F9C5D31DC4A88300866662 /* index.ios.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08F9C5D11DC4A88300866662 /* index.ios.bundle */; };
@@ -204,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08A40A9B1DC54FCD003BA627 /* React.xcodeproj in Frameworks */,
 				08D7B6B01DB4833100116ABB /* libRCTCameraRoll.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
